@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour, IDamageble
     public PlayerController(int health) { Health = health; }
 
 
-    private Rigidbody rb;
-    public GameObject dunGen, weapon;
+    private Rigidbody2D rb;
     public Camera cam;
 
     [SerializeField] private float moveSpeed;
@@ -18,8 +17,7 @@ public class PlayerController : MonoBehaviour, IDamageble
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        weapon.SetActive(false);
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -28,22 +26,11 @@ public class PlayerController : MonoBehaviour, IDamageble
         //Move
         float hMove = Input.GetAxisRaw("Horizontal");
         float vMove = Input.GetAxisRaw("Vertical");
-        Vector3 movement = new Vector3(hMove, 0, vMove).normalized;
+        Vector3 movement = new Vector3(hMove, vMove, 0).normalized;
         rb.velocity = movement * moveSpeed;
-        //Rotate
-        Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-        Vector2 mouseOnScreen = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
-        float angle = Mathf.Atan2(mouseOnScreen.y - positionOnScreen.y, positionOnScreen.x - mouseOnScreen.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0f, angle - 90, 0f));
         //Camera follow
-        Vector3 camPos = new Vector3(transform.position.x, 5, transform.position.z - 7.5f);
+        Vector3 camPos = new Vector3(transform.position.x, 5, transform.position.z - 10f);
         cam.transform.position = camPos;
-        //Attack
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("stabbo");
-            weapon.SetActive(true);
-        }
     }
     public virtual void TakeDamage(int damage)
     {
