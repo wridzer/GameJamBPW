@@ -15,6 +15,8 @@ public class GameManager : SingleTon<GameManager>
     public bool adult;
     public bool senior;
 
+    public string state;
+
     private void Update()
     {
         timePassed += Time.deltaTime;
@@ -26,6 +28,7 @@ public class GameManager : SingleTon<GameManager>
             child = false;
             adult = false;
             senior = false;
+            state = "infant";
         }
         else if (timePassed > infantTime && timePassed < childTime)
         {
@@ -34,6 +37,7 @@ public class GameManager : SingleTon<GameManager>
             child = true;
             adult = false;
             senior = false;
+            state = "child";
         }
         else if (timePassed > childTime && timePassed < adultTime)
         {
@@ -42,6 +46,7 @@ public class GameManager : SingleTon<GameManager>
             child = false;
             adult = true;
             senior = false;
+            state = "adult";
         }
         else if (timePassed > seniorTime)
         {
@@ -50,6 +55,7 @@ public class GameManager : SingleTon<GameManager>
             child = false;
             adult = false;
             senior = true;
+            state = "senior";
         }
     }
 
