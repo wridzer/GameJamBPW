@@ -443,6 +443,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1584022816}
+    - target: {fileID: 3846794627357915019, guid: 002933d95b17bb2429616b12f79ed528,
+        type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3846794627357915023, guid: 002933d95b17bb2429616b12f79ed528,
         type: 3}
       propertyPath: m_RootOrder
