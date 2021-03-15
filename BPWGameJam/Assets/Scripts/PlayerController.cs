@@ -15,9 +15,10 @@ public class PlayerController : MonoBehaviour, IDamageble
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
     [SerializeField] private float smoothCamera = 2.5f;
+    [SerializeField] private float fallMultiplier = 2.5f;
+    [SerializeField] private float lowJumpMultiplier = 2f;
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] private BoxCollider2D feet;
-    public bool isGrounded;
+    [HideInInspector] public bool isGrounded;
     int jumpCount;
     float startCameraY;
     float jumpCoolDown;
@@ -46,6 +47,15 @@ public class PlayerController : MonoBehaviour, IDamageble
     }
     void Jump()
     {
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+
         if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);

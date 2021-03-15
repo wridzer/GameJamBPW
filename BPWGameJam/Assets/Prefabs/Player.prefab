@@ -229,7 +229,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -250,8 +250,9 @@ MonoBehaviour:
   health: 100
   cam: {fileID: 0}
   moveSpeed: 10
-  jumpForce: 50
+  jumpForce: 30
   smoothCamera: 3
+  fallMultiplier: 7
+  lowJumpMultiplier: 5
   cameraTransform: {fileID: 3846794627099499725}
-  feet: {fileID: 2006064906}
   isGrounded: 0
