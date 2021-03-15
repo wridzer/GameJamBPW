@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour, IDamageble
         Vector3 movement = new Vector3(hMove, vMove, 0).normalized;
         rb.velocity = movement * moveSpeed;
         //Camera follow
-        Vector3 camPos = new Vector3(transform.position.x, 5, transform.position.z - 10f);
+        Vector3 camPos = new Vector3(transform.position.x, 0, transform.position.z - 10f);
         cam.transform.position = camPos;
     }
     public virtual void TakeDamage(int damage)
