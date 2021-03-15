@@ -4,7 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Ground
+=======
+  - Floor
+>>>>>>> 52b0ca1fae65fa7b66b5c5d08a7d195a9b0a2afb
   layers:
   - Default
   - TransparentFX
