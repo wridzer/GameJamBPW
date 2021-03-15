@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Wridzer.unity
+    guid: e0f018accc0ced94a9e6474e6abc4fc5
   m_configObjects: {}

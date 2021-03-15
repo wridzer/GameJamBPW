@@ -24,6 +24,15 @@ public class PlayerController : MonoBehaviour, IDamageble
     float jumpCoolDown;
     LayerMask groundLayer;
 
+    public GameObject gameManager;
+
+
+    [Header("Images")]
+    public Sprite infant;
+    public Sprite child;
+    public Sprite adult;
+    public Sprite senior;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +53,26 @@ public class PlayerController : MonoBehaviour, IDamageble
         Vector3 cameraPos = new Vector3(Camera.main.transform.position.x, startCameraY, cameraTransform.position.z);
         Vector3 newCameraPos = new Vector3(cameraTransform.position.x, startCameraY, cameraTransform.position.z);
         Camera.main.transform.position = Vector3.Lerp(cameraPos, newCameraPos, Time.fixedDeltaTime * smoothCamera);
+
+
+
+        string pState = gameManager.GetComponent<GameManager>().state;
+        if (pState == "infant")
+        {
+            GetComponent<SpriteRenderer>().sprite = infant;
+        }
+        if (pState == "child")
+        {
+            GetComponent<SpriteRenderer>().sprite = child;
+        }
+        if (pState == "adult")
+        {
+            GetComponent<SpriteRenderer>().sprite = adult;
+        }
+        if (pState == "senior")
+        {
+            GetComponent<SpriteRenderer>().sprite = senior;
+        }
     }
     void Jump()
     {

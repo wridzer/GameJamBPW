@@ -256,3 +256,8 @@ MonoBehaviour:
   lowJumpMultiplier: 5
   cameraTransform: {fileID: 3846794627099499725}
   isGrounded: 0
+  gameManager: {fileID: 0}
+  infant: {fileID: 21300000, guid: 584544c7351a65446ad02ffcaec7a76e, type: 3}
+  child: {fileID: 21300000, guid: bb73c93d3a59fcb45823bb008efdc332, type: 3}
+  adult: {fileID: 21300000, guid: 13b96cad6563e6e4d9398b32dee186eb, type: 3}
+  senior: {fileID: 21300000, guid: 4ea0c1b3d54369b4c8159bb04ee4fec7, type: 3}

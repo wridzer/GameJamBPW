@@ -11,14 +11,14 @@ public class CheckGrounded : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Ground"))
+        if(other.CompareTag("Floor"))
         {
             playerController.isGrounded = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if(other.CompareTag("Ground"))
+        if(other.CompareTag("Floor"))
         {
             playerController.isGrounded = false;
         }
