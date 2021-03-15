@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private float moveSpeed = 5f;
     private bool isTurned = true;
-    public GameObject player;
+    public GameObject gameManager;
 
     [Header("Images")]
     public Sprite Broccoli;
@@ -35,7 +35,7 @@ public class EnemyController : MonoBehaviour
             transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
         }
 
-        //GET PLAYER STATE --> pState = player.GetComponent<script>().state
+        //GET PLAYER STATE --> pState = gameManager.GetComponent<script>().state
         /*if (pState == baby)
         {
             GetComponent<SpriteRenderer>().sprite = Broccoli;
