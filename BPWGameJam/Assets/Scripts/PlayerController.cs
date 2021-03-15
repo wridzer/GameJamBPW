@@ -13,24 +13,37 @@ public class PlayerController : MonoBehaviour, IDamageble
     public Camera cam;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private float smoothCamera = 2.5f;
+    float startCameraY;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startCameraY = cameraTransform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Move
-        float hMove = Input.GetAxisRaw("Horizontal");
-        float vMove = Input.GetAxisRaw("Vertical");
-        Vector3 movement = new Vector3(hMove, vMove, 0).normalized;
-        rb.velocity = movement * moveSpeed;
+        // //Move
+        Vector3 movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, 0f);
+        rb.velocity = movement * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+        //Jump
+        Jump();
         //Camera follow
-        Vector3 camPos = new Vector3(transform.position.x, 0, transform.position.z - 10f);
-        cam.transform.position = camPos;
+        Vector3 cameraPos = new Vector3(Camera.main.transform.position.x, startCameraY, cameraTransform.position.z);
+        Vector3 newCameraPos = new Vector3(cameraTransform.position.x, startCameraY, cameraTransform.position.z);
+        Camera.main.transform.position = Vector3.Lerp(cameraPos, newCameraPos, Time.fixedDeltaTime * smoothCamera);
+    }
+    void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
     }
     public virtual void TakeDamage(int damage)
     {
