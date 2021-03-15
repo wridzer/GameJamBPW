@@ -14,15 +14,21 @@ public class PlayerController : MonoBehaviour, IDamageble
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private Transform cameraTransform;
     [SerializeField] private float smoothCamera = 2.5f;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] private BoxCollider2D feet;
+    public bool isGrounded;
+    int jumpCount;
     float startCameraY;
+    float jumpCoolDown;
+    LayerMask groundLayer;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         startCameraY = cameraTransform.position.y;
+        groundLayer = LayerMask.GetMask("GroundLayer");
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class PlayerController : MonoBehaviour, IDamageble
     }
     void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
