@@ -35,23 +35,23 @@ public class EnemyController : MonoBehaviour
             transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
         }
 
-        //GET PLAYER STATE --> pState = gameManager.GetComponent<script>().state
-        /*if (pState == baby)
+        string pState = gameManager.GetComponent<GameManager>().state;
+        if (pState == "infant")
         {
             GetComponent<SpriteRenderer>().sprite = Broccoli;
         }
-        if (pState == child)
+        if (pState == "child")
         {
             GetComponent<SpriteRenderer>().sprite = Monster;
         }
-        if (pState == adult)
+        if (pState == "adult")
         {
             GetComponent<SpriteRenderer>().sprite = Belasting;
         }
-        if (pState == boomer)
+        if (pState == "senior")
         {
             GetComponent<SpriteRenderer>().sprite = Reaper;
-        }*/
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
